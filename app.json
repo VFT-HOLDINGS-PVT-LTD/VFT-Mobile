@@ -1,0 +1,49 @@
+{
+  "expo": {
+    "name": "VFT-ATTENDANCE",
+    "slug": "vft-attendance",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/logoMain.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/images/vft_logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff",
+      "with": "10"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/logoMain.png",
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.roxramesh.vftattendance"
+    },
+    "web": {
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you share them with your friends."
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "9425b7aa-ecb4-44e1-8f4b-71ca6212a358"
+      }
+    },
+    "owner": "roxramesh"
+  }
+}

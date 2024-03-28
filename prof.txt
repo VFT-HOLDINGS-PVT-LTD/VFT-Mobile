@@ -1,0 +1,455 @@
+import { View, Text, Image, ScrollView, FlatList, TouchableOpacity, Alert } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { COLORS, images, SIZES, FONTS } from '../constants'
+import DateTimePickerModal from "react-native-modal-datetime-picker";
+import { Button } from 'react-native';
+
+const Home = () => {
+  const [selectedTime, setSelectedTime] = useState(new Date());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSelectedTime(new Date()); // Update the selected time every second
+    }, 1000);
+
+    return () => {
+      clearInterval(interval); // Clean up the interval when the component unmounts
+    };
+  }, []);
+
+
+  return (
+    <SafeAreaView style={{
+      flex: 1,
+      backgroundColor: COLORS.white
+    }}>
+
+      <View style={{
+        marginHorizontal: 22,
+        marginTop: -39
+      }}>
+        <View style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center"
+        }}>
+          <Image
+            source={images.logo}
+            resizeMode="contain"
+            style={{
+              width: 58,
+              height: 22
+            }}
+
+          // onPress={Alert.alert("OK")}
+          />
+
+          <View>
+            <View style={{
+              position: "absolute",
+              bottom: 16,
+              width: 16,
+              height: 16,
+              borderRadius: 8,
+              // backgroundColor: COLORS.black,
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 999
+            }}>
+              <Image
+                source={images.image}
+                resizeMode="contain"
+                style={{
+                  width: 128,
+                  height: 65,
+                  marginLeft: -96,
+                  marginTop: 229,
+                }}
+              />
+            </View>
+
+          </View>
+        </View>
+
+        <ScrollView>
+          <View >
+            <View style={{
+              marginHorizontal: 12,
+              marginVertical: SIZES.padding,
+              marginTop: 20,
+              marginLeft: 7,
+            }}>
+              <View style={{
+                // flexDirection: 'row',
+                // justifyContent: 'center', // Center content horizontally
+                // alignItems: 'center', // Center content vertically
+                marginLeft: 4,
+              }}>
+                <Text style={{
+                  fontSize: 25,
+                  marginVertical: SIZES.padding * 2,
+                }}>Good morning,👋</Text>
+                <Text style={{
+                  fontSize: 40, fontWeight: "bold",
+                  marginVertical: SIZES.padding * 2, marginTop: -17
+                }}>Nimal</Text>
+                <Text style={{
+                  fontSize: 15, fontWeight: "bold",
+                  marginVertical: SIZES.padding * 2, marginTop: -17
+                }}>Begin another graat day by clocking in.</Text>
+              </View>
+              {/* <View>
+
+                <Text>Selected Time: {selectedTime.toLocaleTimeString()}</Text>
+                <Button title="Select Time" onPress={showTimePicker} />
+
+                <DateTimePickerModal
+                  isVisible={isTimePickerVisible}
+                  mode="time"
+                  onConfirm={handleConfirm}
+                  onCancel={hideTimePicker}
+                />
+              </View> */}
+
+              <View style={{
+                flexDirection: 'row', marginRight: -4, // Add some margin between the two views
+              }}>
+                <TouchableOpacity
+                  onPress={this.ClickButton} // Trigger an alert on press
+                  style={{
+                    borderRadius: 10, // You can adjust the borderRadius as needed
+                    backgroundColor: 'white', // Set your desired background color
+                    shadowColor: 'rgb(95,99,104)',
+                    shadowOffset: { width: 0, height: 0 },
+                    shadowOpacity: 0.5,
+                    shadowRadius: 4, // Adjust the shadow radius as needed
+                    elevation: 12, // For Android, you can also use elevation
+                    // padding: 16, // Adjust padding as needed
+                    borderRadius: 85,
+                    borderWidth: 2,
+                    borderColor: COLORS.gray,
+                    backgroundColor: COLORS.white,
+                    borderRadius: 20,
+                    // marginTop: SIZES.padding,
+                    width: '100%', // Set width to 50%
+                    height: 200,
+                    marginRight: 20, // Add some margin between the two views
+
+                  }}>
+                  <Text style={{ ...FONTS.h4, marginTop: 20, marginLeft: 20 }}>THU, 23 July</Text>
+                  <Text style={{ marginTop: 10, marginLeft: 8, fontSize: 55, fontWeight: "bold", color: 'rgb(3 218 166)' }}> {selectedTime.toLocaleTimeString()}</Text>
+                  <TouchableOpacity
+                    style={{
+                      backgroundColor: COLORS.primary,
+                      height: 44,
+                      borderRadius: 6,
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: '89%',
+                      marginLeft: 20,
+                      marginTop: 10
+                    }}
+                  >
+                    <Text
+                      style={{
+                        ...FONTS.h4,
+                        color: COLORS.white,
+                      }}
+                    >
+                      Select Your Location
+                    </Text>
+                  </TouchableOpacity>
+                </TouchableOpacity>
+              </View>
+              <View style={{ flexDirection: 'row', marginTop: 10 }}>
+                <TouchableOpacity
+                  onPress={this.ClickButton} // Trigger an alert on press
+                  style={{
+                    borderRadius: 10, // You can adjust the borderRadius as needed
+                    backgroundColor: 'white', // Set your desired background color
+                    shadowColor: 'rgb(95,99,104)',
+                    shadowOffset: { width: 0, height: 0 },
+                    shadowOpacity: 0.5,
+                    shadowRadius: 4, // Adjust the shadow radius as needed
+                    elevation: 12, // For Android, you can also use elevation
+                    // padding: 16, // Adjust padding as needed
+                    borderRadius: 85,
+                    borderWidth: 2,
+                    borderColor: COLORS.gray,
+                    backgroundColor: COLORS.white,
+                    borderRadius: 30,
+                    marginTop: SIZES.padding,
+                    width: '48%', // Set width to 50%
+                    height: 180,
+                    marginRight: 20, // Add some margin between the two views
+                    alignItems: 'center', // Center content horizontally
+                    justifyContent: 'center', // Center content vertically
+                  }}>
+                  <Image
+                    source={images.image2}
+                    style={{ width: 80, height: 80, marginLeft: -0 }} // Adjust the image size as needed
+                  />
+                  <Text style={{ marginTop: 15, fontSize: 18 }}>Check In</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={this.ClickButton} // Trigger an alert on press
+                  style={{
+                    borderRadius: 10, // You can adjust the borderRadius as needed
+                    backgroundColor: 'white', // Set your desired background color
+                    shadowColor: 'rgb(95,99,104)',
+                    shadowOffset: { width: 0, height: 0 },
+                    shadowOpacity: 0.5,
+                    shadowRadius: 4, // Adjust the shadow radius as needed
+                    elevation: 12, // For Android, you can also use elevation
+                    // padding: 16, // Adjust padding as needed
+                    borderRadius: 85,
+                    borderWidth: 2,
+                    borderColor: COLORS.gray,
+                    backgroundColor: COLORS.white,
+                    borderRadius: 30,
+                    marginTop: SIZES.padding,
+                    width: '48%', // Set width to 50%
+                    height: 180,
+                    alignItems: 'center', // Center content horizontally
+                    justifyContent: 'center', // Center content vertically
+                    borderWidth: 2,
+                  }}>
+                  <Image
+                    source={images.image3}
+                    style={{ width: 80, height: 80, marginLeft: 0 }} // Adjust the image size as needed
+                  />
+                  <Text style={{ marginTop: 15, fontSize: 16 }}>Check Out</Text>
+                </TouchableOpacity>
+              </View>
+              <View style={{ flexDirection: 'row', marginTop: 10 }}>
+                <TouchableOpacity
+                  onPress={this.ClickButton} // Trigger an alert on press
+                  style={{
+                    borderRadius: 10, // You can adjust the borderRadius as needed
+                    backgroundColor: 'white', // Set your desired background color
+                    shadowColor: 'rgb(95,99,104)',
+                    shadowOffset: { width: 0, height: 0 },
+                    shadowOpacity: 0.5,
+                    shadowRadius: 4, // Adjust the shadow radius as needed
+                    elevation: 12, // For Android, you can also use elevation
+                    // padding: 16, // Adjust padding as needed
+                    borderRadius: 85,
+                    borderWidth: 2,
+                    borderColor: COLORS.gray,
+                    backgroundColor: COLORS.white,
+                    borderRadius: 30,
+                    marginTop: SIZES.padding,
+                    width: '48%', // Set width to 50%
+                    height: 180,
+                    marginRight: 20, // Add some margin between the two views
+                    alignItems: 'center', // Center content horizontally
+                    justifyContent: 'center', // Center content vertically
+                    borderWidth: 2,
+                  }}>
+                  <Image
+                    source={images.image4}
+                    style={{ width: 80, height: 80, marginLeft: 10 }} // Adjust the image size as needed
+                  />
+                  <Text style={{ marginTop: 15, fontSize: 18 }}>Break In</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={this.ClickButton} // Trigger an alert on press
+                  style={{
+                    borderRadius: 10, // You can adjust the borderRadius as needed
+                    backgroundColor: 'white', // Set your desired background color
+                    shadowColor: 'rgb(95,99,104)',
+                    shadowOffset: { width: 0, height: 0 },
+                    shadowOpacity: 0.5,
+                    shadowRadius: 4, // Adjust the shadow radius as needed
+                    elevation: 12, // For Android, you can also use elevation
+                    // padding: 16, // Adjust padding as needed
+                    borderRadius: 85,
+                    borderWidth: 2,
+                    borderColor: COLORS.gray,
+                    backgroundColor: COLORS.white,
+                    borderRadius: 30,
+                    marginTop: SIZES.padding,
+                    width: '48%', // Set width to 50%
+                    height: 180,
+                    alignItems: 'center', // Center content horizontally
+                    justifyContent: 'center', // Center content vertically
+                    borderWidth: 2,
+                  }}>
+                  <Image
+                    source={images.image5}
+                    style={{ width: 90, height: 90, marginLeft: -10 }} // Adjust the image size as needed
+                  />
+                  <Text style={{ marginTop: 5, fontSize: 18 }}>Break Out</Text>
+                </TouchableOpacity>
+              </View>
+              {/* <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 10 }}>
+                <TouchableOpacity
+                  onPress={this.ClickButton}
+                  style={{
+                    backgroundColor: "",
+                    borderRadius: 330,
+                    marginTop: SIZES.padding,
+                    width: 100,
+                    height: 100,
+                    marginHorizontal: 5, // Adjust horizontal margin as needed
+                    alignItems: 'center', // Center content horizontally
+                    justifyContent: 'center', // Center content vertically
+                  }}>
+                  <Image
+                    source={images.image6}
+                    style={{ width: 80, height: 80, }} // Adjust the image size as needed
+                  />
+                </TouchableOpacity>
+              </View> */}
+
+
+
+            </View>
+
+
+            {/* 
+                  <FlatList
+                      horizontal={true}
+                      data={shoesList1}
+                      keyExtractor={item => item.id}
+                      renderItem={
+                          ({ item, index }) => (
+                              <Image
+                                  source={item.shoes}
+                                  resizeMode="contain"
+                              />
+                          )
+                      }
+                  /> */}
+
+            {/* <FlatList
+                      horizontal={true}
+                      data={shoesList2}
+                      keyExtractor={item => item.id}
+                      renderItem={
+                          ({ item, index }) => (
+                              <Image
+                                  source={item.shoes}
+                                  resizeMode="contain"
+                              />
+                          )
+                      }
+                  /> */}
+            {/* <ScrollView> */}
+
+            {/* <View style={{
+                      marginHorizontal: 12,
+                      marginVertical: SIZES.padding,
+                  }}>
+                      <FlatList
+                          data={this.state.data}
+                          keyExtractor={(item, index) => index.toString()}
+                          renderItem={({ item }) => (
+                              <View style={{
+                                  backgroundColor: COLORS.gray,
+                                  borderRadius: 30,
+                                  marginTop: SIZES.padding,
+                                  width: SIZES.width - 67,
+                                  height: 150,
+                                  marginRight: 50
+                              }}>
+                                  <Text></Text>
+                                  <Text style={{ marginLeft: 20, }}>RollNo: {item.username}</Text>
+                                  <Text style={{ marginLeft: 20, marginRight: 50 }}>RollNo: {item.password}</Text>
+
+                                    </View>
+                          )}
+                      />
+
+
+                  </View> */}
+            {/* </ScrollView> */}
+          </View>
+
+          {/* <ScrollView> */}
+          {/* <View style={{
+                  marginBottom: 120
+              }}>
+                  <Text style={{
+                      ...FONTS.h3,
+                      marginVertical: SIZES.padding * 2
+                  }}>The Latest and Greatest</Text>
+
+                  <FlatList
+                      horizontal={true}
+                      data={latestList}
+                      keyExtractor={item => item.id}
+                      renderItem={
+                          ({ item, index }) => (
+                              <View style={{
+                                  marginRight: SIZES.padding
+                              }}>
+                                  <TouchableOpacity
+                                      onPress={() => navigation.navigate("Details")}
+                                  >
+                                      <Image
+                                          source={item.image}
+                                          style={{
+                                              height: 140,
+                                              width: 140
+                                          }}
+                                      />
+                                  </TouchableOpacity>
+
+
+                                  <TouchableOpacity
+                                      onPress={() => navigation.navigate("Details")}
+                                  >
+                                      <Text style={{
+                                          fontSize: 14,
+                                          color: COLORS.black,
+                                          fontWeight: "bold"
+                                      }}>
+                                          {item.name}
+                                      </Text>
+                                  </TouchableOpacity>
+
+                                  <Text style={{
+                                      fontSize: 10,
+                                      color: COLORS.black
+                                  }}>
+                                      {item.category}
+                                  </Text>
+
+                                  <View style={{
+                                      flexDirection: "row"
+                                  }}>
+                                      {
+                                          item.oldPrice !== item.price && (
+                                              <Text style={{
+                                                  fontSize: 12,
+                                                  marginVertical: 4,
+                                                  marginRight: 6,
+                                                  textDecorationColor: COLORS.black,
+                                                  textDecorationLine: "line-through"
+                                              }}>
+                                                  ${item.oldPrice}
+                                              </Text>
+                                          )
+                                      }
+
+                                      <Text style={{
+                                          fontSize: 12,
+                                          marginVertical: 4
+                                      }}>
+                                          ${item.price}
+                                      </Text>
+                                  </View>
+                              </View>
+                          )
+                      }
+                  />
+              </View> */}
+        </ScrollView>
+      </View >
+    </SafeAreaView >
+  )
+}
+
+export default Home
